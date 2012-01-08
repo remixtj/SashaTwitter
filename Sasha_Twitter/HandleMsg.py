@@ -9,7 +9,6 @@ import random
 import re
 import twitter
 import ConfigParser
-import sys
 
 class Handlemsg():
     CONSUMER_KEY=''
