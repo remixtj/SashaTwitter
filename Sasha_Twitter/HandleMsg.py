@@ -50,7 +50,7 @@ class Handlemsg():
          
         self.mrk = markov_class.MarkovClass(self.chain_length)
     
-    def newmsg(self, msg, user,id):
+    def newmsg(self, msg, user,msgid):
         if self.nickname in msg:
             #print msg
             msg = re.compile("@"+self.nickname + " ", re.I).sub('', msg)
@@ -63,7 +63,7 @@ class Handlemsg():
             sentence = self.mrk.generate_sentence(msg, self.chain_length, self.max_words)
             if sentence:
                 if prefix:
-                    self.tweetmsg(prefix + sentence,statusid=id)
+                    self.tweetmsg(prefix + sentence,statusid=msgid)
                 else:
                     self.tweetmsg(prefix + sentence) 
                 
