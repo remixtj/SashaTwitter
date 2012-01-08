@@ -25,7 +25,9 @@ class Handlemsg():
 
     def __init__(self):
         '''
-        Constructor
+        Constructor:
+        parses config, creates a twitter.Api authenticated istance, then reads the id of the last
+        parsed message. Last, creates a markov_class instance.
         '''
         Config = ConfigParser.ConfigParser()
         Config.read('config.ini')
