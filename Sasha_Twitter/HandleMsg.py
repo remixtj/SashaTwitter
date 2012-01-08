@@ -25,9 +25,7 @@ class Handlemsg():
 
     def __init__(self):
         '''
-        Constructor:
-        parses config, creates a twitter.Api authenticated istance, then reads the id of the last
-        parsed message. Last, creates a markov_class instance.
+        Constructor
         '''
         Config = ConfigParser.ConfigParser()
         Config.read('config.ini')
@@ -52,8 +50,7 @@ class Handlemsg():
          
         self.mrk = markov_class.MarkovClass(self.chain_length)
     
-    def newmsg(self, msg, user, msgid):
-        
+    def newmsg(self, msg, user,msgid):
         if self.nickname in msg:
             #print msg
             msg = re.compile("@"+self.nickname + " ", re.I).sub('', msg)
@@ -75,7 +72,7 @@ class Handlemsg():
         if statusid == -1:
             status = self.api.PostUpdate(msg)
         else:
-            status = self.api.PostUpdate(msg,in_reply_to_status_id=statusid)
+            status = self.api.PostUpdate(msg,in_reply_to_status_id=id)
         self.lastid = status.id
     
     def parseFriendsMsg(self):
@@ -87,7 +84,7 @@ class Handlemsg():
             # if s.id > self.lastid and s.user.screen_name != "Sashagrigio":
             if s.user.screen_name != self.nickname:
                 try:
-                    self.newmsg(s.text, s.user.screen_name,s.id)
+                    self.newmsg(s.text, s.user.screen_name,id)
                 except:
                     pass
                 print "Terminated parsing msg with id "+ s.id.__str__() +" from "+s.user.screen_name
