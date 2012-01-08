@@ -72,7 +72,7 @@ class Handlemsg():
         if statusid == -1:
             status = self.api.PostUpdate(msg)
         else:
-            status = self.api.PostUpdate(msg,in_reply_to_status_id=id)
+            status = self.api.PostUpdate(msg,in_reply_to_status_id=statusid)
         self.lastid = status.id
     
     def parseFriendsMsg(self):
@@ -84,7 +84,7 @@ class Handlemsg():
             # if s.id > self.lastid and s.user.screen_name != "Sashagrigio":
             if s.user.screen_name != self.nickname:
                 try:
-                    self.newmsg(s.text, s.user.screen_name,id)
+                    self.newmsg(s.text, s.user.screen_name,s.id)
                 except:
                     pass
                 print "Terminated parsing msg with id "+ s.id.__str__() +" from "+s.user.screen_name
