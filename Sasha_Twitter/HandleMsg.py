@@ -9,6 +9,7 @@ import random
 import re
 import twitter
 import ConfigParser
+import sys
 
 class Handlemsg():
     CONSUMER_KEY=''
@@ -50,7 +51,8 @@ class Handlemsg():
          
         self.mrk = markov_class.MarkovClass(self.chain_length)
     
-    def newmsg(self, msg, user,msgid):
+    def newmsg(self, msg, user, msgid):
+        
         if self.nickname in msg:
             #print msg
             msg = re.compile("@"+self.nickname + " ", re.I).sub('', msg)
@@ -84,7 +86,7 @@ class Handlemsg():
             # if s.id > self.lastid and s.user.screen_name != "Sashagrigio":
             if s.user.screen_name != self.nickname:
                 try:
-                    self.newmsg(s.text, s.user.screen_name,id)
+                    self.newmsg(s.text, s.user.screen_name,s.id)
                 except:
                     pass
                 print "Terminated parsing msg with id "+ s.id.__str__() +" from "+s.user.screen_name
