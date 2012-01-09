@@ -13,7 +13,11 @@ if __name__ == "__main__":
             hm.learnFrom(sys.argv[2])
         else:    
             while True:
+                try:
+                    hm.parseFriendsMsg()
+                except:
+                    pass
                 time.sleep(15)
-                hm.parseFriendsMsg()
+                    
     
     
