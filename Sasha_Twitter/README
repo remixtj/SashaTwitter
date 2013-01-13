@@ -1,10 +1,12 @@
-= README =
+README
+=======
 This application uses 3 external files to store some information:
 - config.ini
 - lastid.txt
 - training_text.txt
 
-== config.ini ==
+config.ini
+----------
 
 Is the main configuration file of the app. Contains this parameters:
 CONSUMER_KEY
@@ -23,11 +25,14 @@ message that is parsing.
 
 some other parameters will be added in a second time.
 
-== lastid.txt == 
+lastid.txt
+-------------
 contains the last id of the last message parsed. Is needed in order to restart the application without
 parsing messages that has been previously parsed.
 This file is created automatically on first startup.
 
-== training_text.txt ==
+training_text.txt
+-----------------
+
 contains all the messages text that has been is parsed. Is used by the markov_class to generate markov chains and text.
 This file is created automatically on first startup.
